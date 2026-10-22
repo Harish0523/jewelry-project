@@ -34,7 +34,7 @@ export default function GalleryManager() {
   const fetchGallery = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost/jewelry-api/gallery/get_gallery.php');
+      const res = await fetch('http://atelierharx.gt.tc/jewelry_api/gallery/get_gallery.php');
       const data = await res.json();
       if (data.success) {
         setGallery(data.gallery);

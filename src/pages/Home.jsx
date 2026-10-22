@@ -117,7 +117,7 @@ export default function Home() {
 
     const loadHomeProducts = async () => {
       try {
-        const response = await fetch('http://localhost/jewelry-api/products/get_products.php');
+        const response = await fetch('http://atelierharx.gt.tc/jewelry_api/products/get_products.php');
         const data = await response.json();
         if (!isActive) return;
         if (!data.success || !Array.isArray(data.data)) {
@@ -153,7 +153,7 @@ export default function Home() {
 
     const loadHomeGallery = async () => {
       try {
-        const response = await fetch('http://localhost/jewelry-api/gallery/get_gallery.php');
+        const response = await fetch('http://atelierharx.gt.tc/jewelry_api/gallery/get_gallery.php');
         const data = await response.json();
         if (!isActive || !data.success || !Array.isArray(data.gallery)) return;
 
@@ -182,7 +182,7 @@ export default function Home() {
 
     const loadHomeTestimonials = async () => {
       try {
-        const response = await fetch('http://localhost/jewelry-api/testimonials/get_testimonials.php');
+        const response = await fetch('http://atelierharx.gt.tc/jewelry_api/testimonials/get_testimonials.php');
         const data = await response.json();
         if (!isActive || !data.success || !Array.isArray(data.testimonials)) return;
 

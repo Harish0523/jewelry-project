@@ -16,7 +16,7 @@ export default function OfferManager() {
   const fetchOffers = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost/jewelry-api/offers/get_offers.php');
+      const res = await fetch('http://atelierharx.gt.tc/jewelry_api/offers/get_offers.php');
       const data = await res.json();
       if (data.success) {
         setOffers(data.offers);

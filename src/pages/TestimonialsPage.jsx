@@ -22,7 +22,7 @@ export default function TestimonialsPage() {
   const fetchTestimonials = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost/jewelry-api/testimonials/get_testimonials.php');
+      const res = await fetch('http://atelierharx.gt.tc/jewelry_api/testimonials/get_testimonials.php');
       const data = await res.json();
       if (data.success) {
         setReviews(data.testimonials);
@@ -40,7 +40,7 @@ export default function TestimonialsPage() {
 
     try {
       // Save Review to Database only (Status: Pending)
-      const res = await fetch('http://localhost/jewelry-api/testimonials/manage_testimonial.php', {
+      const res = await fetch('http://atelierharx.gt.tc/jewelry_api/testimonials/manage_testimonial.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

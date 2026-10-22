@@ -49,7 +49,7 @@ export default function Products() {
   const fetchStoreProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost/jewelry-api/products/get_products.php');
+      const response = await fetch('http://atelierharx.gt.tc/jewelry_api/products/get_products.php');
       const data = await response.json();
       
       if (data.success) {

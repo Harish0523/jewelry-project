@@ -41,7 +41,7 @@ export default function Contact() {
 
     try {
       // 1. Send data to XAMPP MySQL Database via PHP API
-      const response = await fetch('http://localhost/jewelry-api/inquiries/add_inquiry.php', {
+      const response = await fetch('http://atelierharx.gt.tc/jewelry_api/inquiries/add_inquiry.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

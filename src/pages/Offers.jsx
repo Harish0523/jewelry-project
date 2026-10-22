@@ -13,7 +13,7 @@ export default function Offers() {
   const fetchActiveOffers = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost/jewelry-api/offers/get_offers.php');
+      const res = await fetch('http://atelierharx.gt.tc/jewelry_api/offers/get_offers.php');
       const data = await res.json();
       if (data.success) {
         // Active ஆக உள்ள ஆஃபர்களை மட்டும் பப்ளிக் பக்கத்திற்காக வடிகட்டுகிறோம்
