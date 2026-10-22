@@ -502,7 +502,9 @@ export default function Home() {
         >
           <div className="space-y-3 text-center md:text-left relative z-10">
             <span className="bg-amber-500 text-neutral-950 text-xs font-bold px-3.5 py-1 rounded-full uppercase shadow-md inline-block">
-              Special Offers
+         git add .
+git commit -m "Fixed all localhost API endpoints to live URL"
+git push origin main     Special Offers
             </span>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-300">
               Exclusive Seasonal Bridal Discount
