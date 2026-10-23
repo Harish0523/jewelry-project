@@ -11,10 +11,6 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [dashboardError, setDashboardError] = useState('');
 
-  useEffect(() => {
-    fetchLiveDashboardData();
-  }, []);
-
   const fetchLiveDashboardData = async () => {
     try {
       setLoading(true);
@@ -34,6 +30,11 @@ export default function AdminDashboard() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of dashboard stats from the backend API
+    fetchLiveDashboardData();
+  }, []);
 
   return (
     <div className="space-y-8">

@@ -27,8 +27,8 @@ const getProductImageUrls = (item) => {
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
   
-  const categoryParam = searchParams.get('category') || 'all';
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam);
+  // The URL query param is the single source of truth for the selected category
+  const selectedCategory = searchParams.get('category') || 'all';
   const [selectedType, setSelectedType] = useState('all');
   const [activeModalProduct, setActiveModalProduct] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -76,7 +76,7 @@ export default function Products() {
       } else {
         setError('Failed to load products from database.');
       }
-    } catch (err) {
+    } catch {
       setError('Cannot connect to XAMPP backend server.');
     } finally {
       setLoading(false);
@@ -84,17 +84,11 @@ export default function Products() {
   };
 
   useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of products from the backend API
     fetchStoreProducts();
   }, []);
 
-  useEffect(() => {
-    if (searchParams.get('category')) {
-      setSelectedCategory(searchParams.get('category'));
-    }
-  }, [searchParams]);
-
   const handleCategoryChange = (cat) => {
-    setSelectedCategory(cat);
     setSelectedType('all');
     setSearchParams(cat === 'all' ? {} : { category: cat });
   };

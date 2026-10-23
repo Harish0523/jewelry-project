@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Sparkles } from 'lucide-react';
 import useSiteContent from '../context/useSiteContent';
 
+// Evaluated once at module load to keep the component render pure
+const CURRENT_YEAR = new Date().getFullYear();
+
 export default function Footer() {
   const { content } = useSiteContent();
   const phoneHref = `tel:${content.mainPhone.replace(/[^\d+]/g, '')}`;
@@ -225,7 +228,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-neutral-800/80 pt-6 text-center text-xs text-gray-400 max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
-        <p>&copy; {new Date().getFullYear()} Atelier Harx. All Rights Reserved.</p>
+        <p>&copy; {CURRENT_YEAR} Atelier Harx. All Rights Reserved.</p>
         <div className="flex gap-6">
           <Link to="/privacy-policy" className="hover:text-amber-400 transition">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-amber-400 transition">Terms & Conditions</Link>

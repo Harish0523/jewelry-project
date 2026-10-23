@@ -65,7 +65,7 @@ export default function ProductManager() {
       } else {
         setError('Failed to load products from database.');
       }
-    } catch (err) {
+    } catch {
       setError('Cannot connect to XAMPP backend server.');
     } finally {
       setLoading(false);
@@ -73,6 +73,7 @@ export default function ProductManager() {
   };
 
   useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of products from the backend API
     fetchProducts();
   }, []);
 
@@ -164,7 +165,7 @@ export default function ProductManager() {
       } else {
         alert(data.message || 'Operation failed');
       }
-    } catch (err) {
+    } catch {
       alert('Server connection error while saving product.');
     }
   };
@@ -186,7 +187,7 @@ export default function ProductManager() {
         } else {
           alert(data.message || 'Delete failed');
         }
-      } catch (err) {
+      } catch {
         alert('Server connection error while deleting.');
       }
     }

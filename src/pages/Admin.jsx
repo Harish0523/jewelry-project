@@ -40,13 +40,6 @@ export default function Admin() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isAuthenticated) return undefined;
-    fetchInquiries();
-    const interval = setInterval(fetchInquiries, 5000);
-    return () => clearInterval(interval);
-  }, [isAuthenticated]);
-
   const fetchInquiries = async () => {
     try {
       const res = await fetch(`${API_BASE_URL}/inquiries/get_inquiries.php`, { credentials: 'include' });
@@ -58,6 +51,14 @@ export default function Admin() {
       console.error('Error fetching live inquiries:', err);
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated) return undefined;
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional polling of live inquiries from the backend API
+    fetchInquiries();
+    const interval = setInterval(fetchInquiries, 5000);
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {

@@ -60,7 +60,7 @@ export default function Contact() {
       } else {
         setErrorMessage(data.message || 'Failed to submit inquiry to database.');
       }
-    } catch (err) {
+    } catch {
       setErrorMessage('Cannot connect to XAMPP backend server.');
     } finally {
       setLoading(false);

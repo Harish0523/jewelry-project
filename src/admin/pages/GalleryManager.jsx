@@ -27,10 +27,6 @@ export default function GalleryManager() {
   const [imageError, setImageError] = useState('');
   const viewingImages = viewingItem ? getItemImages(viewingItem) : [];
 
-  useEffect(() => {
-    fetchGallery();
-  }, []);
-
   const fetchGallery = async () => {
     try {
       setLoading(true);
@@ -45,6 +41,11 @@ export default function GalleryManager() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of gallery items from the backend API
+    fetchGallery();
+  }, []);
 
   const handleOpenModal = (item = null) => {
     setEditingItem(item);

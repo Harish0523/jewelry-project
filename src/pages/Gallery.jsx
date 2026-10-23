@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Filter, ChevronDown, MessageCircle, Eye, X, ShieldCheck, Scale, Award, Gem, Tag } from 'lucide-react';
+import { Sparkles, Filter, ChevronDown, MessageCircle, Eye, X, ShieldCheck, Award, Gem, Tag } from 'lucide-react';
 
 export default function Gallery() {
   const [selectedType, setSelectedType] = useState('all');
@@ -17,10 +17,6 @@ export default function Gallery() {
     setActiveImageIndex(0);
     setActiveModalItem(item);
   };
-
-  useEffect(() => {
-    fetchGalleryData();
-  }, []);
 
   const fetchGalleryData = async () => {
     try {
@@ -69,6 +65,11 @@ export default function Gallery() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of gallery items from the backend API
+    fetchGalleryData();
+  }, []);
 
   const itemTypes = [
     { id: 'all', label: 'All Items' },

@@ -6,10 +6,6 @@ export default function Offers() {
   const [deals, setDeals] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchActiveOffers();
-  }, []);
-
   const fetchActiveOffers = async () => {
     try {
       setLoading(true);
@@ -26,6 +22,11 @@ export default function Offers() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of active offers from the backend API
+    fetchActiveOffers();
+  }, []);
 
   // Motion Variants
   const containerVariants = {

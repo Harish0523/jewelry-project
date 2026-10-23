@@ -43,6 +43,7 @@ export function SiteContentProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of site content from the backend API
     refreshContent();
   }, [refreshContent]);
 

@@ -6,10 +6,6 @@ export default function TestimonialManager() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchTestimonials();
-  }, []);
-
   const fetchTestimonials = async () => {
     try {
       setLoading(true);
@@ -24,6 +20,11 @@ export default function TestimonialManager() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of testimonials from the backend API
+    fetchTestimonials();
+  }, []);
 
   const handleUpdateStatus = async (id, status) => {
     try {

@@ -90,7 +90,7 @@ export default function CustomJewelry() {
       } else {
         setServerError(data.message || 'Failed to save order to database.');
       }
-    } catch (err) {
+    } catch {
       setServerError('Cannot connect to XAMPP backend server.');
     } finally {
       setLoading(false);

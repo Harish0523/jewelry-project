@@ -9,10 +9,6 @@ export default function OfferManager() {
   const [editingOffer, setEditingOffer] = useState(null);
   const [formData, setFormData] = useState({ title: '', discount: '', validTill: '', code: '', status: 'Active' });
 
-  useEffect(() => {
-    fetchOffers();
-  }, []);
-
   const fetchOffers = async () => {
     try {
       setLoading(true);
@@ -27,6 +23,11 @@ export default function OfferManager() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of offers from the backend API
+    fetchOffers();
+  }, []);
 
   const handleOpenModal = (offer = null) => {
     if (offer) {

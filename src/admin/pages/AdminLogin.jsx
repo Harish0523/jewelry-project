@@ -41,7 +41,7 @@ export default function AdminLogin({ onLoginSuccess }) {
       } else {
         setError(data.message || 'Invalid email or password.');
       }
-    } catch (err) {
+    } catch {
       setError('Cannot connect to XAMPP Backend server. Please check Apache & MySQL.');
     } finally {
       setLoading(false);

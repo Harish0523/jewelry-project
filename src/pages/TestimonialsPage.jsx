@@ -15,10 +15,6 @@ export default function TestimonialsPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    fetchTestimonials();
-  }, []);
-
   const fetchTestimonials = async () => {
     try {
       setLoading(true);
@@ -33,6 +29,11 @@ export default function TestimonialsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- intentional initial load of approved testimonials from the backend API
+    fetchTestimonials();
+  }, []);
 
   const handleReviewSubmit = async (event) => {
     event.preventDefault();
